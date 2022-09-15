@@ -1,3 +1,20 @@
-def draw_tree():
-    print("tree not found")
-    return
+def draw_tree(a):
+    b=["_"]
+    c=["|"]
+    d=["/"]
+    e=[chr(92)]
+    a[92][90]=b
+    a[93][90]=b
+    a[91][92]=b
+    a[92][92]=b
+    a[94][92]=b
+    a[95][92]=b
+    a[92][91]=c
+    a[93][91]=c
+    a[90][92]=d
+    a[91][93]=d
+    a[92][94]=d
+    a[93][94]=e
+    a[94][93]=e
+    a[95][92]=e
+    return a
