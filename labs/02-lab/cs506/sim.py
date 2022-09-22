@@ -5,12 +5,31 @@ def euclidean_dist(x, y):
     return res**(1/2)
 
 def manhattan_dist(x, y):
-    raise NotImplementedError()
+    res=0
+    for i in range(len(x)):
+        res+=abs(x[i]-y[i])
+    return res
 
 def jaccard_dist(x, y):
-    raise NotImplementedError()
+    intersection=len(list(set(x).intersection(y)))
+    union=len(list(x))+len(list(y))-intersection
+    if union==0:
+        return 1
+    sim=float(intersection)/union
+    return 1-sim
 
 def cosine_sim(x, y):
-    raise NotImplementedError()
+    dot=0
+    xs=0
+    ys=0
+    for i in range(len(x)):
+        dot+=x[i]*y[i]
+        xs+=x[i]**2
+        ys+=y[i]**2
+    sca=xs**0.5*(ys**0.5)
+    if sca==0:
+        return 0.5
+    sim=dot/sca
+    return sim
 
 # Feel free to add more
