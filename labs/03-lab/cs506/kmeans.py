@@ -11,8 +11,14 @@ def get_centroid(points):
     
     Returns a new point which is the center of all the points.
     """
-    raise NotImplementedError()
-
+    x=0
+    y=0
+    length=len(points)
+    for i in range(length):
+        x+=points[i][0]
+        y+=points[i][1]
+    mean=[(x/length),(y/length)]
+    return mean
 
 def get_centroids(dataset, assignments):
     """
@@ -21,7 +27,17 @@ def get_centroids(dataset, assignments):
     Compute the centroid for each of the assigned groups.
     Return `k` centroids in a list
     """
-    raise NotImplementedError()
+    mean=[]
+    for i in range(len(assignments)):
+        x=0
+        y=0
+        for j in range(len(assignments[i])):
+            x+=(assignments[i])[j][0]
+            y+=(assignments[i])[j][1]
+        mean.append=[(x/len(assignments[i])),(y/len(assignments[i]))]
+    return mean
+
+    
 
 
 def assign_points(data_points, centers):
@@ -44,23 +60,46 @@ def distance(a, b):
     """
     Returns the Euclidean distance between a and b
     """
-    raise NotImplementedError()
+    res = 0
+    for i in range(len(a)):
+        res += (a[i] - b[i])**2
+    return res**(1/2)
 
 
 def distance_squared(a, b):
-    raise NotImplementedError()
+    res = 0
+    for i in range(len(a)):
+        res += (a[i] - b[i])**2
+    return res
 
 
 def cost_function(clustering):
-    raise NotImplementedError()
-
+    #for points in clustering, we use n
+    n=len(clustering)
+    #for mean we use the previous function
+    c=get_centroid(clustering)
+    distance=0
+    for i in range(n):
+        distance+=distance_squared(clustering[i],c)
+    return distance
 
 def generate_k(dataset, k):
     """
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    raise NotImplementedError()
+    a=len(dataset)
+    b=[]
+    for i in range(a):
+        b.append(dataset[i])
+    c=min(b)
+    r=[]
+    for i in range(k):
+        d=random.randint(0,a)
+        e=random.randint(0,b)
+        r.append([d,e])
+    return r
+
 
 
 def generate_k_pp(dataset, k):
@@ -70,6 +109,7 @@ def generate_k_pp(dataset, k):
     where points are picked with a probability proportional
     to their distance as per kmeans pp
     """
+    
     raise NotImplementedError()
 
 
