@@ -12,10 +12,10 @@ def manhattan_dist(x, y):
 
 def jaccard_dist(x, y):
     intersection=len(list(set(x).intersection(y)))
-    union=len(list(x))+len(list(y))-intersection
-    if union==0:
+    unions=len(list(x))+len(list(y))-intersection
+    if unions==0:
         return 1
-    sim=float(intersection)/union
+    sim=float(intersection)/unions
     return 1-sim
 
 def cosine_sim(x, y):

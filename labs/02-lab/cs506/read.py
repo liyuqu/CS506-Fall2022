@@ -4,6 +4,7 @@ def read_csv(csv_file_path):
         in row major.
     """
     import csv
+    
     with open(csv_file_path)as csv_file:
         reader=csv.reader(csv_file)
         for row in reader:
